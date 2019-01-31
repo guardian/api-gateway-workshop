@@ -15,3 +15,17 @@ deployments:
   api-gateway-workshop-upload:
     template: api-gateway-workshop
     actions: [uploadLambda]
+
+  api-gateway-workshop-cfn:
+    type: cloud-formation
+    app: api-gateway-workshop
+    dependencies: [api-gateway-workshop-upload]
+    parameters:
+      prependStackToCloudFormationStackName: false
+      cloudFormationStackName: api-gateway-workshop
+      templatePath: cfn.yaml
+
+    api-gateway-workshop-lambda-update:
+      template: api-gateway-workshop
+      actions: [updateLambda]
+      dependencies: [api-gateway-workshop-cfn]
