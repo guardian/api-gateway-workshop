@@ -25,7 +25,7 @@ deployments:
       cloudFormationStackName: api-gateway-workshop
       templatePath: cfn.yaml
 
-    api-gateway-workshop-lambda-update:
-      template: api-gateway-workshop
-      actions: [updateLambda]
-      dependencies: [api-gateway-workshop-cfn]
+  api-gateway-workshop-lambda-update:
+    template: api-gateway-workshop
+    actions: [updateLambda]
+    dependencies: [api-gateway-workshop-cfn]
