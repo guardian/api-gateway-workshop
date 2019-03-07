@@ -58,6 +58,15 @@ Resources:
               Action:
                 - execute-api:Invoke
               Resource: "*"
+        - PolicyName: s3
+          PolicyDocument:
+            Statement:
+              Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource:
+                - !Sub ${WorkshopS3Bucket.Arn}.*.json
+    DependsOn: WorkshopS3Bucket
 
   WorkshopLambda:
     Type: AWS::Lambda::Function
@@ -143,3 +152,8 @@ Resources:
       FunctionName: !Sub ${App}-${Stage}
       Principal: apigateway.amazonaws.com
     DependsOn: WorkshopLambda
+
+  WorkshopS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ss-workshop-bucket

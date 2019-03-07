@@ -20,7 +20,8 @@ val circeVersion = "0.7.0"
 libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-lambda-java-core" % "1.1.0",
   "io.circe" %% "circe-parser" % "0.7.0",
-  "io.circe" %% "circe-generic-extras_sjs0.6" % "0.7.0" 
+  "io.circe" %% "circe-generic-extras_sjs0.6" % "0.7.0",
+  "com.amazonaws" % "aws-java-sdk-s3" % "1.11.512"
   exclude("org.typelevel", "cats-core_sjs0.6_2.11" )
   exclude("com.chuusai", "shapeless_sjs0.6_2.11")
 )
